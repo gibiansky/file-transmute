@@ -1,0 +1,132 @@
+@import "bootstrap-compass";
+@import "bootstrap-variables";
+@import "bootstrap";
+
+$body-background: #F5F5F5;
+$narrow-margin: 10%;        // How much space to pad by on left and right.
+$headline-font: 'Ruda';
+$headline-color: #DEDEDE;
+$text-font: 'Lato';
+$background-img: "/imgs/header-bg.alpha.png";
+$background-gradient: linear-gradient(to bottom, #444444, #000000);
+
+body {
+    background-color: $body-background;
+    padding-bottom: 70px;
+    font-family: $text-font, sans-serif;
+}
+
+.narrow {
+    margin-left:  $narrow-margin;
+    margin-right: $narrow-margin;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.headline-font {
+    font-family: $headline-font, sans-serif;
+}
+
+.headline {
+    @extend .headline-font;
+    color: $headline-color;
+    text-align: center;
+}
+.title  {
+    @extend .headline;
+    font-weight: 900;
+}
+
+.try-it {
+    background: linear-gradient(to bottom, #E45950 0%, #E77665 100%);
+    border-color: #A73625;
+    font-variant: small-caps;
+    font-weight: bold;
+    border-radius: 2px;
+}
+.try-it-container {
+    max-width: 14em;
+}
+
+
+.header-bg {
+    background-image: url($background-img), $background-gradient;
+}
+.upload {
+    max-height: 10em;
+    transition: max-height 0.8s;
+    overflow: hidden;
+}
+.upload-hidden {
+    max-height: 0;
+    overflow: hidden;
+}
+#upload {
+    text-align: center;
+    padding: 0 auto;
+}
+.inline-box {
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+label {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 150%;
+}
+.no-margin {
+    margin: 0px;
+}
+
+// Change the <hr>s around the upload area to be visible.
+.upload-separator {
+    border-color: #DDD;
+}
+
+/* Border classes for highlighting the upload area when Try It is pressed */
+.no-border {
+    // When the <hr> is on the border, you can see the white stripe.
+    // Move the border a little bit to avoid having it on the <hr>.
+    // Also, extra space makes it look better.
+    margin: 2em 0px;
+
+    // Move the border away from the center content.
+    padding: 1.5em 0px;
+
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px $body-background;
+
+    // Make the border same as the body color, so you can't see it.
+    border: 1px solid $body-background;
+
+    // Transition the border when this class is changed.
+    transition: box-shadow 0.4s, border-color 0.4s;
+}
+.border {
+    @extend .no-border;
+    $glowing-border-color: #4195fc;
+    border: 1px solid $glowing-border-color;
+    box-shadow: 0px 0px 3px 3px $glowing-border-color, inset 0px 0px 3px 3px $glowing-border-color;
+}
