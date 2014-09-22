@@ -52,3 +52,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Haskell
+.cabal-sandbox
+cabal.sandbox.config
+.sass-cache
+Main
