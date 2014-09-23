@@ -5,11 +5,15 @@ import           Control.Applicative
 import           Snap.Core
 import           Snap.Util.FileServe
 import           Snap.Http.Server
-import           Data.Maybe (isJust, fromJust)
+import           Data.Maybe (isJust, fromJust, maybeToList)
 import           Data.ByteString (ByteString)
 import qualified Data.ByteString.Char8 as Char
 import           Data.Aeson
 import           Data.Monoid
+import           Network.Api.Postmark
+import           Control.Monad
+import           Control.Monad.IO.Class
+import           Data.Text (Text, pack)
 
 data FileFormat = PDF
                 | PNG
@@ -20,6 +24,9 @@ data ConversionResult = ConversionSuccess FileFormat FileFormat ReceiveURL
                       | ConversionFailure String
 
 newtype ReceiveURL = Receive String
+
+postmarkSettings :: PostmarkSettings
+postmarkSettings = postmarkHttps "07b7320d-98e9-4cc6-a998-afd10c7fd9fb"
 
 instance ToJSON ConversionResult where
   toJSON (ConversionFailure reason) = object [
@@ -82,4 +89,34 @@ conversionFailure :: String -> Snap ConversionResult
 conversionFailure = return . ConversionFailure
 
 feedback :: Snap ()
-feedback = undefined
+feedback = do
+  address <- getPostParam "email"
+  message <- getPostParam "message"
+  case message of
+    Nothing      -> failFeedback
+    Just content ->
+      let to = "andrew@filetransmute.com" : maybeToList address in
+        sendFeedback to content
+  where
+    failFeedback :: Snap ()
+    failFeedback = undefined
+
+    sendFeedback :: [ByteString] -> ByteString -> Snap ()
+    sendFeedback to content = 
+      void $ liftIO $ request postmarkSettings $ email $ defaultEmail {
+          emailFrom = "andrew@filetransmute.com",
+          emailTo = map (pack . Char.unpack) to,
+          emailSubject = "File Transmute Feedback",
+          emailHtml =  Just $ formatEmail content
+        }
+
+    formatEmail :: ByteString -> Text
+    formatEmail content = mconcat [
+        "<b>Thank you for submitting feedback!</b><br/>",
+        "<hr/>",
+        "<p><b>Feedback:</b> ", pack $ Char.unpack content, "</p>",
+        "<hr/>",
+        "<p>Feel free to reply to this email if you'd ",
+        "like to submit more feedback or have any questions.</p>",
+        "<p>– Andrew</br><br/><i>andrew@filetransmute.com</i></p>"
+      ]
