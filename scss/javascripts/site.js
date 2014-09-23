@@ -18,4 +18,14 @@ $(document).ready(function() {
     $("#upload-reminder").on('transitionend webkitTransitionEnd', function() {
         $("#upload-reminder").attr('class', 'no-border');
     });
+
+    $("#feedback-submit").click(function(e) {
+        var message = $("#feedback-textarea").val();
+        var email = $("#feedback-email").val();
+        var params = {"message" : message};
+        if(email != "") {
+            params["email"] = email;
+        }
+        $.post("/feedback", params);
+    });
 });

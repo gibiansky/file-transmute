@@ -112,7 +112,7 @@ feedback = do
 
     formatEmail :: ByteString -> Text
     formatEmail content = mconcat [
-        "<b>Thank you for submitting feedback!</b><br/>",
+        "<center><b>Thank you for submitting feedback!</b></center><br/>",
         "<hr/>",
         "<p><b>Feedback:</b> ", pack $ Char.unpack content, "</p>",
         "<hr/>",
