@@ -71,6 +71,7 @@ convert = do
       conversionFailure "/convert POST must have parameters: 'from', 'to', and 'file'."
 
   writeLBS $ encode result
+  modifyResponse $ setContentType "application/json"
 
   where
     fmt :: ByteString -> FileFormat

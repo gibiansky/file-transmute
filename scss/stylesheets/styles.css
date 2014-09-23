@@ -8068,48 +8068,68 @@ body {
 }
 
 /* line 49, ../sass/styles.scss */
+.try-it:hover {
+  border-color: #541b13;
+}
+
+/* line 52, ../sass/styles.scss */
 .try-it-container {
   max-width: 14em;
+  float: none;
 }
 
-/* line 54, ../sass/styles.scss */
+/* line 56, ../sass/styles.scss */
+.button-container {
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  display: block;
+  max-width: 10em;
+  float: none;
+}
+
+/* line 63, ../sass/styles.scss */
+#upload-reminder {
+  padding-top: 0em;
+}
+
+/* line 67, ../sass/styles.scss */
 .header-bg {
-  background-image: url("/imgs/header-bg.alpha.png"), linear-gradient(to bottom, #444444, #000000);
+  background-image: url("/static/imgs/header-bg.alpha.png"), linear-gradient(to bottom, #444444, #000000);
 }
 
-/* line 57, ../sass/styles.scss */
+/* line 70, ../sass/styles.scss */
 .upload {
   max-height: 10em;
   transition: max-height 0.8s;
   overflow: hidden;
 }
 
-/* line 62, ../sass/styles.scss */
+/* line 75, ../sass/styles.scss */
 .upload-hidden {
   max-height: 0;
   overflow: hidden;
 }
 
-/* line 66, ../sass/styles.scss */
+/* line 79, ../sass/styles.scss */
 #upload {
   text-align: center;
   padding: 0 auto;
 }
 
-/* line 70, ../sass/styles.scss */
+/* line 83, ../sass/styles.scss */
 .inline-box {
   margin-bottom: 0.5em;
   margin-left: 1em;
   margin-right: 1em;
 }
 
-/* line 75, ../sass/styles.scss */
+/* line 88, ../sass/styles.scss */
 .btn-file {
   position: relative;
   overflow: hidden;
 }
 
-/* line 79, ../sass/styles.scss */
+/* line 92, ../sass/styles.scss */
 .btn-file input[type=file] {
   position: absolute;
   top: 0;
@@ -8126,25 +8146,25 @@ body {
   display: block;
 }
 
-/* line 94, ../sass/styles.scss */
+/* line 107, ../sass/styles.scss */
 label {
   display: inline-block;
   font-family: 'Lato', sans-serif;
   font-size: 150%;
 }
 
-/* line 99, ../sass/styles.scss */
+/* line 112, ../sass/styles.scss */
 .no-margin {
   margin: 0px;
 }
 
-/* line 104, ../sass/styles.scss */
+/* line 117, ../sass/styles.scss */
 .upload-separator {
   border-color: #DDD;
 }
 
 /* Border classes for highlighting the upload area when Try It is pressed */
-/* line 109, ../sass/styles.scss */
+/* line 122, ../sass/styles.scss */
 .no-border, .border {
   margin: 2em 0px;
   padding: 1.5em 0px;
@@ -8154,7 +8174,7 @@ label {
   transition: box-shadow 0.4s, border-color 0.4s;
 }
 
-/* line 127, ../sass/styles.scss */
+/* line 140, ../sass/styles.scss */
 .border {
   border: 1px solid #4195fc;
   box-shadow: 0px 0px 3px 3px #4195fc, inset 0px 0px 3px 3px #4195fc;

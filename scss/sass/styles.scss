@@ -7,7 +7,7 @@ $narrow-margin: 10%;        // How much space to pad by on left and right.
 $headline-font: 'Ruda';
 $headline-color: #DEDEDE;
 $text-font: 'Lato';
-$background-img: "/imgs/header-bg.alpha.png";
+$background-img: "/static/imgs/header-bg.alpha.png";
 $background-gradient: linear-gradient(to bottom, #444444, #000000);
 
 body {
@@ -46,10 +46,23 @@ body {
     font-weight: bold;
     border-radius: 2px;
 }
+.try-it:hover {
+    border-color: darken(#A73625, 20%);
+}
 .try-it-container {
     max-width: 14em;
+    float: none;
 }
-
+.button-container {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+    display: block;
+    max-width: 10em;
+    float: none;
+}
+#upload-reminder {
+    padding-top: 0em;
+}
 
 .header-bg {
     background-image: url($background-img), $background-gradient;
