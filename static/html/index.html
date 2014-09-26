@@ -35,64 +35,60 @@
         <br/>
         Same service for all the document formats you need.
         </p>
-
-        <!-- 
-        <div class="row">
-          <div class="col-md-3 centered try-it-container">
-            <a id="try-it" class="btn btn-primary btn-lg btn-block try-it" role="button">Try it!</a>
-          </div>
-        </div>
-        -->
       </div>
     </div>
 
-    <!--
-    <div id="upload" class="upload-hidden narrow">
-    -->
     <div id="upload" class="upload narrow">
       <hr class="upload-separator"/>
 
       <div id="upload-reminder" class="no-border">
         <label>Convert document</label>
         <span class="btn btn-default btn-file inline-box">
-          Browse <input type="file">
+            <span id="#browse">Browse</span> <input id="file-upload" type="file">
         </span>
         <label>from</label>
 
         <div class="btn-group inline-box" style="">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            PDF <span class="caret"></span>
+          <button type="button" data-value="pdf" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <div class="filetype">PDF</div> <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">PDF</a></li>
+            <li><a href="#" data-value="pdf">PDF</a></li>
             <li class="divider"></li>
-            <li><a href="#">Word (docx)</a></li>
-            <li><a href="#">Word (doc)</a></li>
+            <li><a href="#" data-value="docx">Word (docx)</a></li>
+            <li><a href="#" data-value="doc">Word (doc)</a></li>
             <li class="divider"></li>
-            <li><a href="#">Image (JPG)</a></li>
-            <li><a href="#">Image (PNG)</a></li>
+            <li><a href="#" data-value="jpg">Image (JPG)</a></li>
+            <li><a href="#" data-value="img">Image (PNG)</a></li>
           </ul>
         </div>
 
         <label>to</label>
 
         <div class="btn-group inline-box">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Word (docx) <span class="caret"></span>
+          <button type="button" data-value="docx" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <div class="filetype">Word (docx)</div> <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">PDF</a></li>
+            <li><a href="#" data-value="pdf">PDF</a></li>
             <li class="divider"></li>
-            <li><a href="#">Word (docx)</a></li>
-            <li><a href="#">Word (doc)</a></li>
+            <li><a href="#" data-value="docx">Word (docx)</a></li>
+            <li><a href="#" data-value="doc">Word (doc)</a></li>
             <li class="divider"></li>
-            <li><a href="#">Image (JPG)</a></li>
-            <li><a href="#">Image (PNG)</a></li>
+            <li><a href="#" data-value="jpg">Image (JPG)</a></li>
+            <li><a href="#" data-value="img">Image (PNG)</a></li>
           </ul>
+        </div>
+        <br/>
+
+        <div id="filename">
         </div>
 
         <div class="btn-group centered button-container">
-            <a id="go-convert" class="btn btn-primary btn-lg btn-block" role="button">Convert!</a>
+            <a id="go-convert" class="btn btn-primary btn-lg btn-block try-it" role="button">Convert!</a>
+        </div>
+
+        <div id="download">
         </div>
       </div>
 

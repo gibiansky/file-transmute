@@ -79,6 +79,7 @@ body {
 #upload {
     text-align: center;
     padding: 0 auto;
+    overflow: visible;
 }
 .inline-box {
     margin-bottom: 0.5em;
@@ -109,13 +110,31 @@ label {
     font-family: 'Lato', sans-serif;
     font-size: 150%;
 }
-.no-margin {
-    margin: 0px;
+
+#download {
+    float: left;
+    margin-left: 5em;
+}
+.filetype {
+    display: inline;
+}
+#filename {
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    font-size: 150%;
+
+    float: left;
+
+    color: #666;
+
+    margin-left: 6em;
+    margin-top: 1em;
 }
 
 // Change the <hr>s around the upload area to be visible.
 .upload-separator {
     border-color: #DDD;
+    margin: 0px;
 }
 
 /* Border classes for highlighting the upload area when Try It is pressed */

@@ -1,31 +1,4 @@
-// Whether the Try-It button has been pressed.
-var conversionShown = false;
-
 $(document).ready(function() {
-    /*
-    $("#try-it").on('click', function(event) {
-        event.preventDefault();
-        if(!conversionShown) {
-            $("#upload").attr('class', 'upload narrow');
-            $(".upload-separator").attr('class', 'upload-separator no-margin');
-        } else {
-            $("#upload-reminder").attr('class', 'border');
-        }
-    });
-    $("#upload").on('transitionend webkitTransitionEnd', function() {
-        $("#upload").css('overflow', 'visible');
-        conversionShown = true;
-    });
-    $("#upload-reminder").on('transitionend webkitTransitionEnd', function() {
-        $("#upload-reminder").attr('class', 'no-border');
-    });
-    */
-
-    $("#upload-reminder").attr('class', 'no-border');
-    $("#upload").css('overflow', 'visible');
-    $("#upload").attr('class', 'upload narrow');
-    $(".upload-separator").attr('class', 'upload-separator no-margin');
-
     $("#feedback-submit").click(function(e) {
         var message = $("#feedback-textarea").val();
         var email = $("#feedback-email").val();
@@ -36,19 +9,45 @@ $(document).ready(function() {
         $.post("/feedback", params);
     });
 
+    var files = undefined;
+    $("#file-upload").change(function(e) {
+        files = e.target.files;
+        $("#filename").text(escape(files[0].name));
+        $("#browse").text("Change file");
+    });
+
     $("#go-convert").click(function(e) {
         var from = "pdf";
-        var to = "hello";
-        var params = {"from": from, "to": to};
+        var to = "jpg";
+
+        var params = new FormData();
+        params.append("from", from);
+        params.append("to", to);
+        params.append("file", files[0]);
+
+        // Switch to loading gif.
+        $("#download").html('<img style="padding-right: 1em;" src="/static/imgs/loading.gif"/><b>Loading...</b>');
+
         $.ajax({
             url: "/convert",
-            dataType: 'json',
             type: "POST",
-            contentType: "application/json; charset=utf8",
             data: params,
+            contentType: false,
+            processData: false,
             success: function(resp) {
-                console.log(resp);
+                var status = resp.status;
+                if(status == "success") {
+                    var url = resp.url;
+                    $("#download").html('<a href="' + url + '"><b>Download file</b></a>');
+                } else {
+                    $("#download").html('<b>Conversion failed.</b>');
+                }
             },
         });
+    });
+
+    $(".dropdown-menu li a").click(function() {
+        $(this).parents(".btn-group").find('.filetype').text($(this).text());
+        $(this).parents(".btn-group").find('.btn').val($(this).data('value'));
     });
 });
